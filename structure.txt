@@ -1,0 +1,46 @@
+soccer-booking-app/
+├── app/                       # Main application folder
+│   ├── +html.tsx              # HTML configuration
+│   ├── _layout.tsx            # Global layout component
+│   ├── +not-found.tsx         # Custom 404 page
+│   ├── (tabs)/                # Tab navigation structure
+│   │   ├── home/              # Home tab
+│   │   │   └── index.tsx      # Home screen
+│   │   ├── bookings/          # Booking management
+│   │   │   ├── index.tsx      # List of bookings
+│   │   │   └── [id]/          # Individual booking details
+│   │   │       └── index.tsx  # Booking detail screen
+│   │   ├── fields/            # Soccer fields management
+│   │   │   ├── index.tsx      # List of fields
+│   │   │   └── [id]/          # Field details
+│   │   │       └── index.tsx  # Field detail screen
+│   │   ├── profile/           # User profile management
+│   │   │   └── index.tsx      # User profile screen
+│   │   └── settings/          # App settings
+│   │       └── index.tsx      # Settings screen
+│   ├── components/            # Shared components
+│   │   ├── Header.tsx         # Header component
+│   │   ├── Footer.tsx         # Footer component
+│   │   ├── FieldCard.tsx      # Field card component
+│   │   └── BookingModal.tsx    # Modal for booking a field
+│   ├── context/               # Context providers (optional, can be removed if not using)
+│   │   ├── AuthContext.tsx    # Authentication context
+│   │   └── BookingContext.tsx  # Booking context
+│   ├── hooks/                 # Custom hooks
+│   │   └── useFetchFields.tsx  # Hook for fetching fields
+│   ├── services/              # API services
+│   │   ├── api.ts             # API base URL and config
+│   │   └── bookingService.ts   # Service for booking APIs
+│   ├── store/                 # Global state management
+│   │   ├── index.ts           # Store setup and configuration
+│   │   ├── bookingSlice.ts     # Slice for booking state management
+│   │   ├── fieldSlice.ts       # Slice for field state management
+│   │   └── userSlice.ts        # Slice for user state management
+│   └── styles/                # Global styles
+│       └── global.css         # Global CSS file
+├── public/                    # Static assets
+│   ├── images/                # Image assets
+│   └── icons/                 # Icons
+├── .env                       # Environment variables
+├── package.json               # Project dependencies
+└── README.md                  # Project documentation
