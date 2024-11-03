@@ -57,11 +57,11 @@ function AppContent() {
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="+not-found" />
         </Stack>
-        <Box className="bg-white dark:bg-black flex-1">
+        {/* <Box className="bg-white dark:bg-black flex-1">
           <Button onPress={toggleTheme}>
             <ButtonText>Toggle color mode</ButtonText>
           </Button>
-        </Box>
+        </Box> */}
       </NavigationThemeProvider>
     </GluestackUIProvider>
   )

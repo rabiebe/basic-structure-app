@@ -1,5 +1,6 @@
-import { Button, ButtonText } from '@/components/ui/button'
+import { Button, ButtonIcon, ButtonText } from '@/components/ui/button'
 import { Center } from '@/components/ui/center'
+import { Icon } from '@/components/ui/icon'
 import { Text } from '@/components/ui/text'
 import { Dimensions, View } from 'react-native'
 import {
@@ -10,8 +11,13 @@ import {
   ContributionGraph,
   StackedBarChart,
 } from 'react-native-chart-kit'
+import { Sun, Moon } from 'lucide-react-native'
+import { useState } from 'react'
+import { useTheme } from '@/components/ui/ThemeProvider/ThemeProvider'
 
 export default function HomeScreen() {
+  const { theme, toggleTheme } = useTheme()
+
   return (
     <View>
       <Text>Bezier Line Chart</Text>
@@ -58,6 +64,12 @@ export default function HomeScreen() {
           borderRadius: 16,
         }}
       />
+      {/* dark mode icon sun and moon  */}
+      {theme === 'dark' ? (
+        <Moon color={'white'} size={48} onPress={toggleTheme} />
+      ) : (
+        <Sun color={'black'} size={48} onPress={toggleTheme} />
+      )}
     </View>
   )
 }
