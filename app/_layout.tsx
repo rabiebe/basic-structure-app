@@ -7,12 +7,10 @@ import '@/global.css'
 import { GluestackUIProvider } from '@/components/ui/gluestack-ui-provider'
 import { useFonts } from 'expo-font'
 import { Stack } from 'expo-router'
-import * as SplashScreen from 'expo-splash-screen'
-import { useEffect } from 'react'
+// import * as SplashScreen from 'expo-splash-screen'
+import Splach from '../app/splash/splash'
+import { useEffect, useState } from 'react'
 import 'react-native-reanimated'
-
-import { Box } from '@/components/ui/box'
-import { Button, ButtonText } from '@/components/ui/button'
 
 import {
   ThemeProvider as CustomThemeProvider,
@@ -20,7 +18,7 @@ import {
 } from '@/components/ui/ThemeProvider/ThemeProvider'
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync()
+// SplashScreen.preventAutoHideAsync()
 
 export default function RootLayout() {
   const [loaded] = useFonts({
@@ -28,15 +26,15 @@ export default function RootLayout() {
   })
 
   // Hide splash screen once fonts are loaded
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync()
-    }
-  }, [loaded])
+  // useEffect(() => {
+  //   if (loaded) {
+  //     // SplashScreen.hideAsync()
+  //   }
+  // }, [loaded])
 
-  if (!loaded) {
-    return null
-  }
+  // if (!loaded) {
+  //   return null
+  // }
 
   return (
     <CustomThemeProvider>
@@ -46,22 +44,26 @@ export default function RootLayout() {
 }
 
 function AppContent() {
+  const [loading, setLoading] = useState(true)
   const { theme, toggleTheme } = useTheme() // Access theme and toggleTheme from custom ThemeProvider
-
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false)
+    }, 2000)
+  })
   return (
     <GluestackUIProvider mode={theme}>
       <NavigationThemeProvider
         value={theme === 'dark' ? DarkTheme : DefaultTheme}
       >
-        <Stack>
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="+not-found" />
-        </Stack>
-        {/* <Box className="bg-white dark:bg-black flex-1">
-          <Button onPress={toggleTheme}>
-            <ButtonText>Toggle color mode</ButtonText>
-          </Button>
-        </Box> */}
+        {loading ? (
+          <Splach />
+        ) : (
+          <Stack>
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen name="+not-found" />
+          </Stack>
+        )}
       </NavigationThemeProvider>
     </GluestackUIProvider>
   )
